@@ -13,7 +13,7 @@ The system allows you to manage clients and their bank accounts. The system will
 - Withdraw money
 - Check balance
 - 
-## Tecnologías utilizadas
+## Technologies used
 
 java
 
