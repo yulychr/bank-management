@@ -1,16 +1,17 @@
 package org.yulyschr.model;
 
 import java.util.Objects;
-public class BankingTransaction {
+public class Transaction {
     private double amount;
     private String typeTransaction ;
     private BankAccount bankAccount;
 
-    public BankingTransaction() {
+
+    public Transaction() {
 
     }
 
-    public BankingTransaction(double amount, String typeTransaction, BankAccount bankAccount) {
+    public Transaction(double amount, String typeTransaction, BankAccount bankAccount) {
         this.amount = amount;
         this.typeTransaction = typeTransaction;
         this.bankAccount = bankAccount;
@@ -33,14 +34,12 @@ public class BankingTransaction {
     }
 
     public void execute() {
+
         if (Objects.equals(this.typeTransaction, "deposito")) {
-            if (amount > 0) {
-                double balance = this.bankAccount.getAccountBalance();
-                this.bankAccount.setAccountBalance(balance + amount);
-                System.out.println("Depósito realizado con éxito. Nuevo saldo: " + this.bankAccount.getAccountBalance()) ;
-            } else {
-                System.out.println("El monto a depositar debe de ser mayor a 0.");
-            }
+            bankAccount.depossit(amount, bankAccount);
+
+        } else if (Objects.equals(this.typeTransaction, "retiro")) {
+            bankAccount.withdrawal(amount,bankAccount);
         }
     }
 
